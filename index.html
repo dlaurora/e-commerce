@@ -3,15 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi sitio</title>
+    <title>Home - My E-Commerce</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <p>Hola HTML!!!</p>
-    <nav>
-        
-    </nav>
-</body>
-<footer>
+    <script>
+        // Load the header.html content into the header section
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML('afterbegin', data);  // Insert the header at the top of the body
+                    var header = document.querySelector('header');  // Select the header element
+                    var mainWrapper = document.querySelector('.main-wrapper');  // Select the main content wrapper
+                    
+                    if (mainWrapper) {  // Check if the element exists before applying the style
+                        var headerHeight = header.offsetHeight;  // Get the height of the header
+                        //mainWrapper.style.marginTop = headerHeight + 'px';  // Add top margin to push content below the header
+                    }
+                });
+        });
+    </script>
 
-</footer>
+  <main class="main-wrapper" id="content">
+      <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My E-Commerce!</h1>
+            <p>Your one-stop shop for everything you need.</p>
+            <a href="products.html" class="shop-now-btn">Shop Now</a>
+        </div>
+      </section>
+    
+       <!-- Electronics Carousel Section -->
+       <div class="carousel-container">
+        <div class="carousel-text">
+            <h3 class="banner-heading">Electronics Sale</h3>
+            <p class="banner-text">Up to 50% off on electronics!</p>
+        </div>
+        <div id="electronicsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- JavaScript will dynamically populate this section -->
+            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#electronicsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#electronicsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Fashion Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel-text">
+            <h3 class="banner-heading">New Fashion Trends</h3>
+            <p class="banner-text">Shop the latest fashion trends now.</p>
+        </div>
+        <div id="fashionCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- JavaScript will dynamically populate this section -->
+            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#fashionCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#fashionCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Home Goods Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel-text">
+            <h3 class="banner-heading">Home Goods</h3>
+            <p class="banner-text">Upgrade your home with amazing deals.</p>
+        </div>
+        <div id="homeGoodsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- JavaScript will dynamically populate this section -->
+            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#homeGoodsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#homeGoodsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- Client Review Section -->
+        <section id="client-reviews" class="py-5">
+            <div class="container">
+            <h2 id="client-say">What Our Clients Say</h2>
+            <div class="parent">
+                <!-- Review 1 -->
+                <div class="div1 client-review">
+                <img src="https://img.freepik.com/premium-photo/man-with-beard-eyeglasses-smiling-blur-background-camera-infront-him_973127-9650.jpg?size=626&ext=jpg" alt="Client Image" class="client-img">
+                <p class="client-text">"Amazing service! Fast shipping and great customer support."</p>
+                <h4 class="client-name">John Doe</h4>
+                </div>
+        
+                <!-- Review 2 -->
+                <div class="div2 client-review">
+                <img src="https://img.freepik.com/free-photo/beautiful-redhead-woman-portrait-close-up_23-2148321248.jpg?size=626&ext=jpg&ga=GA1.1.283315898.1727280750&semt=ais_hybrid" alt="Client Image" class="client-img">
+                <p class="client-text">"High-quality products at affordable prices. Love this store!"</p>
+                <h4 class="client-name">Jane Smith</h4>
+                </div>
+        
+                <!-- Review 3 -->
+                <div class="div3 client-review">
+                <img src="https://img.freepik.com/free-photo/smiley-woman-outdoors_23-2148613033.jpg?size=626&ext=jpg&ga=GA1.1.283315898.1727280750&semt=ais_hybrid" alt="Client Image" class="client-img">
+                <p class="client-text">"Great selection of products and excellent customer care."</p>
+                <h4 class="client-name">Alice Johnson</h4>
+                </div>
+        
+                <!-- Review 4 -->
+                <div class="div4 client-review">
+                <img src="https://img.freepik.com/free-photo/happy-man-talking-phone_23-2148718087.jpg?t=st=1727455043~exp=1727458643~hmac=1db081e2207a6507939413fba738af8481cda25802d3a8ad0169769238632e9b&w=900" alt="Client Image" class="client-img">
+                <p class="client-text">"Fantastic service and fast delivery!"</p>
+                <h4 class="client-name">Mark Williams</h4>
+                </div>
+        
+                <!-- Review 5 -->
+                <div class="div5 client-review">
+                <img src="https://img.freepik.com/free-photo/front-view-smiley-woman-home_23-2150062545.jpg?size=626&ext=jpg&ga=GA1.1.283315898.1727280750&semt=ais_hybrid" alt="Client Image" class="client-img">
+                <p class="client-text">"I love shopping here. Great quality products!"</p>
+                <h4 class="client-name">Emily Clark</h4>
+                </div>
+            </div>
+            </div>
+        </section>
+
+   </main>
+
+    <script>
+      // Dynamically load the footer and initialize modals
+      fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.body.insertAdjacentHTML('beforeend', data);
+              // Initialize modal functionality after footer is loaded
+              initializeModals();
+          });
+  
+      // Function to handle opening and closing of modals
+      function initializeModals() {
+          // Open modal and prevent default anchor behavior
+          function openModal(event, modalId) {
+              event.preventDefault(); // Prevents the page from reloading
+              const modal = document.getElementById(modalId);
+              modal.style.display = 'flex';
+          }
+  
+          // Close modal
+          function closeModal(modalId) {
+              const modal = document.getElementById(modalId);
+              modal.style.display = 'none';
+          }
+  
+          // Close modal if user clicks outside the content
+          window.onclick = function(event) {
+              const modals = document.querySelectorAll('.modal');
+              modals.forEach(modal => {
+                  if (event.target == modal) {
+                      modal.style.display = 'none';
+                  }
+              });
+          }
+  
+          // Attach event listeners for all modal links
+          document.querySelectorAll('.footer-links a').forEach(link => {
+              link.addEventListener('click', (event) => {
+                  const modalId = event.target.getAttribute('onclick').match(/'(.*)'/)[1];
+                  openModal(event, modalId);
+              });
+          });
+  
+          // Attach event listeners for close buttons in modals
+          document.querySelectorAll('.modal .close').forEach(closeButton => {
+              const modalId = closeButton.getAttribute('onclick').match(/'(.*)'/)[1];
+              closeButton.addEventListener('click', () => {
+                  closeModal(modalId);
+              });
+          });
+      }
+  </script>
+
+    <script src="./js/contact-scripts.js"></script>
+    <!-- Ensure you use the full version of jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript to Initialize Carousels -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // Function to create carousel items dynamically
+          function createCarouselItems(carouselId, folderPath, count) {
+              const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+              
+              if (!carouselInner) return;
+
+              for (let i = 1; i <= count; i++) {
+                  const carouselItem = document.createElement('div');
+                  carouselItem.classList.add('carousel-item');
+                  if (i === 1) carouselItem.classList.add('active');
+
+                  const img = document.createElement('img');
+                  img.src = `${folderPath}/${i}.png`;
+                  img.classList.add('d-block', 'w-100');
+                  img.alt = `${carouselId} image ${i}`;
+
+                  carouselItem.appendChild(img);
+                  carouselInner.appendChild(carouselItem);
+              }
+          }
+
+            // Load Electronics Carousel Images
+            createCarouselItems('electronicsCarousel', './assets/images/electronics', 10, 'Electronics Sale', 'Up to 50% off on electronics!');
+
+            // Load Fashion Carousel Images
+            createCarouselItems('fashionCarousel', './assets/images/fashion', 10, 'New Fashion Trends', 'Shop the latest fashion trends now.');
+
+            // Load Home Goods Carousel Images
+            createCarouselItems('homeGoodsCarousel', './assets/images/home-goods', 10, 'Home Goods', 'Upgrade your home with amazing deals.');
+        });
+    </script>
+
+</body>
 </html>

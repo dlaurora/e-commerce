@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <script>
+        // Load the header.html content into the header section
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML('afterbegin', data);  // Insert the header at the top of the body
+                    var header = document.querySelector('header');  // Select the header element
+                    var mainWrapper = document.querySelector('.main-wrapper');  // Select the main content wrapper
+                    var headerHeight = header.offsetHeight;  // Get the height of the header
+                    mainWrapper.style.marginTop = headerHeight + 'px';  // Add top margin to push content below the header
+                });
+        });
+    </script>
+
+    <div class="container">
+        <main id="about">
+            <h2>About Us</h2>
+            <p>Welcome to My E-Commerce, your one-stop-shop for all things [industry/product types].</p>
+            <p>Our mission is to provide our customers with the best products at unbeatable prices. We pride ourselves on excellent customer service and quality offerings. Our team is passionate about bringing you a seamless shopping experience and ensuring your satisfaction with every purchase.</p>
+            <p>Founded in [Year], we have continuously grown and evolved to meet the demands of our customers. We believe in making online shopping as easy and enjoyable as possible. Thank you for choosing My E-Commerce!</p>
+        </main>
+    </div>
+
+    <script>
+        // Dynamically load the footer and initialize modals
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Initialize modal functionality after footer is loaded
+                initializeModals();
+            });
+    
+        // Function to handle opening and closing of modals
+        function initializeModals() {
+            // Open modal and prevent default anchor behavior
+            function openModal(event, modalId) {
+                event.preventDefault(); // Prevents the page from reloading
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+            }
+    
+            // Close modal
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'none';
+            }
+    
+            // Close modal if user clicks outside the content
+            window.onclick = function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+    
+            // Attach event listeners for all modal links
+            document.querySelectorAll('.footer-links a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const modalId = event.target.getAttribute('onclick').match(/'(.*)'/)[1];
+                    openModal(event, modalId);
+                });
+            });
+    
+            // Attach event listeners for close buttons in modals
+            document.querySelectorAll('.modal .close').forEach(closeButton => {
+                const modalId = closeButton.getAttribute('onclick').match(/'(.*)'/)[1];
+                closeButton.addEventListener('click', () => {
+                    closeModal(modalId);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

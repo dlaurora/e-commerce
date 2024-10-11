@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <!-- Load Header -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML('afterbegin', data);  // Insert the header at the top
+                    var header = document.querySelector('header');
+                    var mainWrapper = document.querySelector('.main-wrapper');
+                    var headerHeight = header.offsetHeight;
+                    mainWrapper.style.marginTop = headerHeight + 'px';  // Adjust the margin for content below the header
+                });
+        });
+    </script>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper container">
+        <aside id="filters">
+            <h2>Shop by Department</h2>
+            <div id="department-filters">
+                <label><input type="checkbox" class="filter" data-filter="category" value="electronics"> Electronics</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="computers"> Computers</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="smart home"> Smart Home</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="arts & crafts"> Arts & Crafts</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="automotive"> Automotive</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="baby"> Baby</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="beauty"> Beauty and Personal Care</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="women's fashion"> Women's Fashion</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="men's fashion"> Men's Fashion</label><br>
+                <label><input type="checkbox" class="filter" data-filter="category" value="girls' fashion"> Girls' Fashion</label><br>
+                <div id="more-departments" style="height: 0; overflow: hidden;">
+                    <label><input type="checkbox" class="filter" data-filter="category" value="boys' fashion"> Boys' Fashion</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="health"> Health and Household</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="home & kitchen"> Home and Kitchen</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="industrial"> Industrial and Scientific</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="luggage"> Luggage</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="movies & television"> Movies & Television</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="pet supplies"> Pet supplies</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="software"> Software</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="sports & outdoors"> Sports and Outdoors</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="tools"> Tools & Home Improvement</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="toys & games"> Toys and Games</label><br>
+                    <label><input type="checkbox" class="filter" data-filter="category" value="video games"> Video Games</label><br>
+                </div>
+            </div>
+            <button id="see-more-btn">See more</button>
+        </aside>
+
+        <main id="products">
+            <div id="loader">Loading products...</div>
+            <div id="product-grid" class="product-grid"></div>
+            <div id="pagination-controls"></div> <!-- Pagination Controls -->
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./js/product-scripts.js"></script>
+    
+    <!-- Adjust margin for the header when resized -->
+    <script>
+        function adjustMarginForHeader() {
+            var header = document.querySelector('header');
+            var mainWrapper = document.querySelector('.main-wrapper');
+            var headerHeight = header.offsetHeight;
+            mainWrapper.style.marginTop = headerHeight + 'px';
+        }
+
+        window.addEventListener('resize', adjustMarginForHeader);  // Recalculate margin when window is resized
+    </script>
+
+</body>
+</html>

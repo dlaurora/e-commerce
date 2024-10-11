@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+<body>
+    <script>
+        // Load the header.html content into the header section
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML('afterbegin', data);  // Insert the header at the top of the body
+                    var header = document.querySelector('header');  // Select the header element
+                    var mainWrapper = document.querySelector('.main-wrapper');  // Select the main content wrapper
+                    var headerHeight = header.offsetHeight;  // Get the height of the header
+                    mainWrapper.style.marginTop = headerHeight + 'px';  // Add top margin to push content below the header
+                });
+        });
+    </script>
+
+    <div class="container">
+        <main id="cart">
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-items"></div>
+
+            <div id="cart-summary">
+                <h3>Total: $<span id="cart-total">0</span></h3>
+                <button id="checkout-button">Proceed to Checkout</button>
+            </div>
+        </main>
+    </div>
+    
+    <script src="./js/cart-scripts.js"> </script>
+    <script>
+        // Dynamically load the footer and initialize modals
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Initialize modal functionality after footer is loaded
+                initializeModals();
+            });
+    
+        // Function to handle opening and closing of modals
+        function initializeModals() {
+            // Open modal and prevent default anchor behavior
+            function openModal(event, modalId) {
+                event.preventDefault(); // Prevents the page from reloading
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+            }
+    
+            // Close modal
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'none';
+            }
+    
+            // Close modal if user clicks outside the content
+            window.onclick = function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+    
+            // Attach event listeners for all modal links
+            document.querySelectorAll('.footer-links a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const modalId = event.target.getAttribute('onclick').match(/'(.*)'/)[1];
+                    openModal(event, modalId);
+                });
+            });
+    
+            // Attach event listeners for close buttons in modals
+            document.querySelectorAll('.modal .close').forEach(closeButton => {
+                const modalId = closeButton.getAttribute('onclick').match(/'(.*)'/)[1];
+                closeButton.addEventListener('click', () => {
+                    closeModal(modalId);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
